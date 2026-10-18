@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PyLearn — Türkçe Python öğrenme platformu</title>
+<meta name="description" content="Tarayıcıda çalışan, Türkçe ve etkileşimli Python dersleri. Öğretmenler için sınıf, ödev ve ilerleme takibi paneli." />
+<meta name="theme-color" content="#0b1020" />
+<meta property="og:title" content="PyLearn — Türkçe Python öğrenme platformu" />
+<meta property="og:description" content="Kurulum yok: kodu tarayıcıda yaz, çalıştır, öğren. Öğretmenler için sınıf ve ödev paneli." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<style>
+:root{--bg:#0b1020;--surface:#131a2e;--surface2:#1a2340;--text:#e6e9f5;--muted:#9aa4c4;--primary:#8c9cff;--accent:#5eead4;--border:#27304f;--btn:#4f5fe0;--btn-text:#fff}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f6f7fc;--surface:#fff;--surface2:#eef0fb;--text:#151a33;--muted:#545e82;--primary:#3b4bd1;--accent:#0f766e;--border:#dde1f2;--btn:#3b4bd1}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--primary)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;color:var(--text);text-decoration:none}
+.brand img{width:30px;height:30px;border-radius:8px}
+nav{display:flex;gap:18px;align-items:center}
+nav a.link{color:var(--muted);text-decoration:none;font-size:.95rem}nav a.link:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:12px;background:var(--btn);color:var(--btn-text);font-weight:700;text-decoration:none;border:1px solid transparent}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--border)}
+.btn:hover{filter:brightness(1.1)}
+.hero{padding:72px 0 48px;display:grid;gap:36px;grid-template-columns:1.1fr .9fr;align-items:center}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.12;margin:0 0 16px;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{color:var(--muted);font-size:1.12rem;margin:0 0 26px;max-width:34em}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.note{color:var(--muted);font-size:.88rem;margin-top:14px}
+.code{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 20px 50px -20px rgba(0,0,0,.5)}
+.code .bar{display:flex;gap:6px;padding:10px 14px;background:var(--surface2)}
+.code .bar i{width:10px;height:10px;border-radius:50%;background:var(--border)}
+.code pre{margin:0;padding:18px;font:14px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-x:auto}
+.k{color:#c084fc}.s{color:#86efac}.c{color:var(--muted)}.out{border-top:1px solid var(--border);padding:12px 18px;font:14px ui-monospace,Menlo,monospace;color:var(--accent)}
+section{padding:56px 0}
+section h2{font-size:clamp(1.5rem,3.5vw,2.1rem);margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 30px;max-width:40em}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px}
+.card h3{margin:10px 0 6px;font-size:1.08rem}.card p{margin:0;color:var(--muted);font-size:.96rem}
+.ico{width:40px;height:40px;border-radius:12px;background:var(--surface2);display:grid;place-items:center;font-size:1.3rem}
+.alt{background:var(--surface);border-block:1px solid var(--border)}
+.alt .card{background:var(--bg)}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+ol.steps li{counter-increment:s;background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:22px}
+ol.steps li::before{content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--btn);color:#fff;font-weight:800;margin-bottom:10px}
+ol.steps strong{display:block;margin-bottom:4px}ol.steps span{color:var(--muted);font-size:.96rem}
+details{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700;min-height:28px}details p{color:var(--muted);margin:8px 0 0}
+.final{text-align:center;padding:64px 0}
+footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:40px}nav a.link{display:none}}
+:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#top"><img src="favicon.svg" alt="" width="30" height="30" />PyLearn</a>
+  <nav aria-label="Ana menü"><a class="link" href="#ozellikler">Özellikler</a><a class="link" href="#ogretmenler">Öğretmenler</a><a class="link" href="#sss">SSS</a>
+  <a class="btn" href="https://kalefurkan.github.io/pylearn-app/">Uygulamayı aç</a></nav>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <h1>Python'u <em>Türkçe</em> öğren, tarayıcında kodla.</h1>
+    <p class="lead">Kurulum yok, hesap şart değil. 14 modül ve 42 etkileşimli ders; kodu yaz, anında çalıştır, hatalarından öğren. Öğretmenler için sınıf, ödev ve ilerleme takibi paneli de içinde.</p>
+    <div class="cta"><a class="btn" href="https://kalefurkan.github.io/pylearn-app/">Hemen başla — ücretsiz</a><a class="btn ghost" href="#ogretmenler">Öğretmen misin?</a></div>
+    <p class="note">Misafir olarak denemek için kayıt gerekmez. İlerlemen cihazında saklanır.</p>
+  </div>
+  <div class="code" aria-label="Örnek kod ve çıktısı">
+    <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+<pre><span class="c"># Dersten bir alıştırma</span>
+<span class="k">for</span> sayi <span class="k">in</span> range(<span class="s">1</span>, <span class="s">4</span>):
+    print(<span class="s">"Merhaba Python!"</span>, sayi)</pre>
+    <div class="out">Merhaba Python! 1<br>Merhaba Python! 2<br>Merhaba Python! 3</div>
+  </div>
+</div>
+
+<section id="ozellikler"><div class="wrap">
+  <h2>Öğrenmeyi kolaylaştıran her şey</h2>
+  <p class="sub">Sıfırdan başlayanlar için tasarlandı: kısa dersler, hemen uygulama ve anlaşılır Türkçe.</p>
+  <div class="grid">
+    <div class="card"><div class="ico" aria-hidden="true">⚡</div><h3>Tarayıcıda Python</h3><p>Kodun doğrudan tarayıcında çalışır. Kurulum, hesap ya da sunucu beklemek yok.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">📚</div><h3>14 modül, 42 ders</h3><p>Değişkenlerden fonksiyonlara, listelerden dosya işlemlerine kadar adım adım müfredat.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🧩</div><h3>Alıştırma ve sınavlar</h3><p>Her derste uygulama, çoktan seçmeli sınav ve hata ayıklama görevleri. Çıktın otomatik kontrol edilir.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">📴</div><h3>Çevrim dışı çalışır</h3><p>İlerlemen önce cihazında saklanır; internet olmasa da çalışmaya devam edebilirsin.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🔄</div><h3>Her cihazda devam et</h3><p>Hesap açarsan ilerlemen web ve iPhone arasında senkronize olur.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🌗</div><h3>Koyu ve açık tema</h3><p>Rahat okunan, mobilde de kullanışlı arayüz.</p></div>
+  </div>
+</div></section>
+
+<section id="ogretmenler" class="alt"><div class="wrap">
+  <h2>Öğretmenler için sınıf paneli</h2>
+  <p class="sub">Öğrencilerinden e-posta toplamadan, birkaç dakikada sınıfını kur ve ilerlemeyi takip et.</p>
+  <div class="grid">
+    <div class="card"><div class="ico" aria-hidden="true">👩‍🏫</div><h3>Sınıf ve öğrenci hesapları</h3><p>Ad soyad listesini yapıştır; kullanıcı adları ve geçici şifreler otomatik oluşur. Çıktı al ya da CSV indir.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">📝</div><h3>Ödev ver</h3><p>Ders, alıştırma ve sınav seç, teslim tarihi belirle. Öğrenciler yalnızca verdiğin ödevler üzerinden ilerler.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">📊</div><h3>Pano ve takip</h3><p>Kim çalıştı, hangi ödev kaç kişide tamamlandı, kimin desteğe ihtiyacı var — tek bakışta.</p></div>
+    <div class="card"><div class="ico" aria-hidden="true">🔒</div><h3>Veri en aza indirilmiş</h3><p>Öğrenciden e-posta istenmez. Hesabı silme uygulama içinden yapılır.</p></div>
+  </div>
+  <p style="margin-top:28px"><a class="btn" href="https://kalefurkan.github.io/pylearn-app/register">Öğretmen hesabı oluştur</a></p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Nasıl çalışır?</h2><p class="sub">Üç adımda başla.</p>
+  <ol class="steps">
+    <li><strong>Uygulamayı aç</strong><span>Misafir olarak devam et ya da hesap oluştur.</span></li>
+    <li><strong>Dersi oku, kodu yaz</strong><span>Kısa anlatımın ardından editörde kendin dene.</span></li>
+    <li><strong>İlerlemeni gör</strong><span>Puanlar, seriler ve rozetlerle gelişimini takip et.</span></li>
+  </ol>
+</div></section>
+
+<section id="sss" class="alt"><div class="wrap">
+  <h2>Sık sorulanlar</h2><p class="sub">&nbsp;</p>
+  <details><summary>Ücretsiz mi?</summary><p>Şu an evet; uygulamayı denemek için ödeme bilgisi gerekmez.</p></details>
+  <details><summary>Bir şey kurmam gerekiyor mu?</summary><p>Hayır. Python doğrudan tarayıcında çalışır. İlk açılışta çalışma ortamı indirilir, sonra hızlı açılır.</p></details>
+  <details><summary>Öğrenciler nasıl giriş yapar?</summary><p>Öğretmen öğrenci hesaplarını oluşturur; öğrenci kullanıcı adı ve öğretmenin verdiği geçici şifreyle girer. E-posta gerekmez.</p></details>
+  <details><summary>Verilerim nerede?</summary><p>İlerleme önce cihazında saklanır. Hesap açarsan buluta senkronize edilir ve hesabını uygulama içinden silebilirsin.</p></details>
+  <details><summary>iPhone uygulaması var mı?</summary><p>iOS sürümü geliştirme aşamasında; şimdilik web sürümünü telefonunda da kullanabilirsin.</p></details>
+</div></section>
+
+<div class="wrap final">
+  <h2>İlk dersine hazır mısın?</h2>
+  <p class="sub" style="margin-inline:auto">Merhaba, dünya! — birkaç dakikada.</p>
+  <a class="btn" href="https://kalefurkan.github.io/pylearn-app/">PyLearn'ü aç</a>
+</div>
+</main>
+<footer><div class="wrap"><span>© PyLearn</span><span>Tanıtım sitesi · Uygulama için “Uygulamayı aç” bağlantısını kullan</span></div></footer>
+</body>
+</html>
